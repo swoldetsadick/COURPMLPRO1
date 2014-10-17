@@ -29,7 +29,9 @@ data <- read.csv("./pml-training.csv", header = TRUE, sep = ",")
 You can also embed plots, for example:
 
 ```{r, echo=FALSE}
-plot(cars)
+library(caret)
+nsv <- nearZeroVar(data, saveMetrics = TRUE)
+nsv
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
