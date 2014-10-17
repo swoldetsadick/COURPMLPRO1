@@ -4,13 +4,26 @@ author: "Woldetsadick Selam Getachew"
 date: "Friday, October 17, 2014"
 output: html_document
 ---
+```{r, echo = FALSE, cache = TRUE, results = 'hide'}
+old.loc <- Sys.getlocale("LC_TIME")
+Sys.setlocale(category = "LC_TIME", locale="English")
 
+time <- format(Sys.time(),"%a, %b %d %Y, %X")
+
+rversion <- R.Version()
+rversion <- rversion[[13]]
+
+sysversion <- sessionInfo()
+sysversion <- sysversion[2]
+```
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r}
-summary(cars)
+```{r, cache = TRUE}
+url <- "http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+download.file(url, "pml-training.csv")
+data <- read.csv("./pml-training.csv", header = TRUE, sep = ",")
 ```
 
 You can also embed plots, for example:
